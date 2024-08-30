@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
-import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
-import EditNoteIcon from '@mui/icons-material/EditNote';
-import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
-import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+import DeleteSweepIcon from "@mui/icons-material/DeleteSweep";
+import EditNoteIcon from "@mui/icons-material/EditNote";
+import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 
 const Form = () => {
-  const [groupName, setGroupName] = useState('');
-  const [acName, setAcName] = useState('');
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [pincode, setPincode] = useState('');
-  const [state, setState] = useState('');
-  const [contact1, setContact1] = useState('');
-  const [contact2, setContact2] = useState('');
-  const [email, setEmail] = useState('');
-  const [panNo, setPanNo] = useState('');
-  const [gstNo, setGstNo] = useState('');
-  const [obdr, setObdr] = useState('');
-  const [obcr, setObcr] = useState('');
+  const [groupName, setGroupName] = useState("");
+  const [acName, setAcName] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [pincode, setPincode] = useState("");
+  const [state, setState] = useState("");
+  const [contact1, setContact1] = useState("");
+  const [contact2, setContact2] = useState("");
+  const [email, setEmail] = useState("");
+  const [panNo, setPanNo] = useState("");
+  const [gstNo, setGstNo] = useState("");
+  const [obdr, setObdr] = useState("");
+  const [obcr, setObcr] = useState("");
   const [fetchedData, setFetchedData] = useState([]);
   const [idToUpdate, setIdToUpdate] = useState(null);
   const [currentPage, setCurrentPage] = useState(1); // State for current page
@@ -32,10 +32,12 @@ const Form = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/accounts');
+      const response = await axios.get(
+        "https://deploy-dzii.onrender.com/accounts"
+      );
       setFetchedData(response.data); // Update fetched data state
     } catch (error) {
-      console.error('Error fetching data: ', error);
+      console.error("Error fetching data: ", error);
     }
   };
 
@@ -62,49 +64,55 @@ const Form = () => {
       if (validateForm()) {
         if (idToUpdate) {
           // Update existing record
-          const response = await axios.put(`http://localhost:4000/accounts/${idToUpdate}`, formData);
-          console.log('Updated data: ', response.data);
+          const response = await axios.put(
+            `https://deploy-dzii.onrender.com/accounts/${idToUpdate}`,
+            formData
+          );
+          console.log("Updated data: ", response.data);
           fetchData(); // Refresh data after update
           clearForm(); // Clear form fields
           setIdToUpdate(null); // Reset idToUpdate state
         } else {
           // Insert new record
-          const response = await axios.post('http://localhost:4000/accounts', formData);
-          console.log('Inserted data: ', response.data);
+          const response = await axios.post(
+            "https://deploy-dzii.onrender.com/accounts",
+            formData
+          );
+          console.log("Inserted data: ", response.data);
           setFetchedData([...fetchedData, response.data]); // Update fetched data state
           clearForm(); // Clear form fields
         }
       } else {
-        console.log('Please fill in all required fields.');
+        console.log("Please fill in all required fields.");
       }
     } catch (error) {
-      console.error('Error submitting data: ', error);
+      console.error("Error submitting data: ", error);
     }
   };
 
   const validateForm = () => {
     return (
-      groupName !== '' &&
-      acName !== '' &&
-      address !== '' &&
-      city !== '' &&
-      pincode !== '' &&
-      state !== '' &&
-      contact1 !== '' &&
-      email !== '' &&
-      panNo !== '' &&
-      gstNo !== '' &&
-      obdr !== '' &&
-      obcr !== ''
+      groupName !== "" &&
+      acName !== "" &&
+      address !== "" &&
+      city !== "" &&
+      pincode !== "" &&
+      state !== "" &&
+      contact1 !== "" &&
+      email !== "" &&
+      panNo !== "" &&
+      gstNo !== "" &&
+      obdr !== "" &&
+      obcr !== ""
     );
   };
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/accounts/${id}`);
+      await axios.delete(`https://deploy-dzii.onrender.com/accounts/${id}`);
       fetchData(); // Refresh data after deletion
     } catch (error) {
-      console.error('Error deleting data: ', error);
+      console.error("Error deleting data: ", error);
     }
   };
 
@@ -127,19 +135,19 @@ const Form = () => {
   };
 
   const clearForm = () => {
-    setGroupName('');
-    setAcName('');
-    setAddress('');
-    setCity('');
-    setPincode('');
-    setState('');
-    setContact1('');
-    setContact2('');
-    setEmail('');
-    setPanNo('');
-    setGstNo('');
-    setObdr('');
-    setObcr('');
+    setGroupName("");
+    setAcName("");
+    setAddress("");
+    setCity("");
+    setPincode("");
+    setState("");
+    setContact1("");
+    setContact2("");
+    setEmail("");
+    setPanNo("");
+    setGstNo("");
+    setObdr("");
+    setObcr("");
   };
 
   // Calculate start and end index for current page
