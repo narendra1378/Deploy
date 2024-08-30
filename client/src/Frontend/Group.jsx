@@ -18,7 +18,9 @@ function Group() {
 
   const fetchItems = async () => {
     try {
-      const response = await axios.get(`https://deploy-dzii.onrender.com/list`);
+      const response = await axios.get(
+        `https://deploy-1-xx5r.onrender.com/list`
+      );
       setItems(response.data);
     } catch (error) {
       console.error("Error fetching items:", error);
@@ -27,7 +29,7 @@ function Group() {
 
   const addItem = async () => {
     try {
-      await axios.post("https://deploy-dzii.onrender.com/list", {
+      await axios.post("https://deploy-1-xx5r.onrender.com/list", {
         name: itemName,
       });
       setItemName("");
@@ -39,7 +41,7 @@ function Group() {
 
   const deleteItem = async (id) => {
     try {
-      await axios.delete(`https://deploy-dzii.onrender.com/list/${id}`);
+      await axios.delete(`https://deploy-1-xx5r.onrender.com/list/${id}`);
       fetchItems();
     } catch (error) {
       console.error("Error deleting item:", error);
@@ -48,7 +50,7 @@ function Group() {
 
   const updateItem = async (id, newName) => {
     try {
-      await axios.put(`https://deploy-dzii.onrender.com/list/${id}`, {
+      await axios.put(`https://deploy-1-xx5r.onrender.com/list/${id}`, {
         name: newName,
       });
       fetchItems();

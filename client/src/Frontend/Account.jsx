@@ -65,7 +65,7 @@ const Form = () => {
         if (idToUpdate) {
           // Update existing record
           const response = await axios.put(
-            `https://deploy-dzii.onrender.com/accounts/${idToUpdate}`,
+            `https://deploy-1-xx5r.onrender.com/accounts/${idToUpdate}`,
             formData
           );
           console.log("Updated data: ", response.data);
@@ -75,8 +75,8 @@ const Form = () => {
         } else {
           // Insert new record
           const response = await axios.post(
-            "https://deploy-dzii.onrender.com/accounts",
-            formData
+            "https://deploy-1-xx5r.onrender.com/accounts",
+            formDatam
           );
           console.log("Inserted data: ", response.data);
           setFetchedData([...fetchedData, response.data]); // Update fetched data state
@@ -109,7 +109,7 @@ const Form = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://deploy-dzii.onrender.com/accounts/${id}`);
+      await axios.delete(`hhttps://deploy-1-xx5r.onrender.com/accounts/${id}`);
       fetchData(); // Refresh data after deletion
     } catch (error) {
       console.error("Error deleting data: ", error);

@@ -30,7 +30,7 @@ const Product = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "https://deploy-dzii.onrender.com/products"
+        "https://deploy-1-xx5r.onrender.com/products"
       );
       setFetchedData(response.data);
     } catch (error) {
@@ -58,7 +58,7 @@ const Product = () => {
       if (validateForm()) {
         if (idToUpdate) {
           await axios.put(
-            `https://deploy-dzii.onrender.com/products/${idToUpdate}`,
+            `https://deploy-1-xx5r.onrender.com/products/${idToUpdate}`,
             formData
           );
           console.log(idToUpdate)
@@ -67,7 +67,7 @@ const Product = () => {
           setIdToUpdate(null);
         } else {
           const response = await axios.post(
-            "https://deploy-dzii.onrender.com/products",
+            "https://deploy-1-xx5r.onrender.com/products",
             formData
           );
           setFetchedData(prevData => [...prevData, response.data]);
@@ -87,7 +87,7 @@ const Product = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://deploy-dzii.onrender.com/products/${id}`);
+      await axios.delete(`https://deploy-1-xx5r.onrender.com/products/${id}`);
       fetchData(); // Refresh data after deletion
     } catch (error) {
       console.error('Error deleting data: ', error);
